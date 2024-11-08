@@ -10,6 +10,8 @@ You can also configure any command after the mount command, allowing you to rest
 
 ## How to use it?
 
+This project needs to run on the computer that has the necessary capabilities for mounting Veracrypt devices, allowing you to access and mount them remotely from your local network.
+
 You can follow the steps below:
 
 ## Clone the repository
