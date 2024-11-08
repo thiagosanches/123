@@ -22,6 +22,7 @@ You can follow the steps below:
 ```bash
 git clone https://github.com/thiagosanches/veracrypt-mounter.git
 cd veracrypt-mounter
+npm install
 ```
 
 ## Configure the application
