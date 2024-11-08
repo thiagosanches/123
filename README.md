@@ -6,8 +6,7 @@ This tool is designed to assist with mounting encrypted disks using VeraCrypt. I
 
 With this tool, you'll still need to perform some manual steps, but it allows you to partially automate the mounting process without hard-coding sensitive information. Instead, it utilizes AWS SSM parameters to securely store and retrieve the necessary credentials. This tool requires a Multi-Factor Authentication (MFA) token to retrieve the secret password stored in the AWS SSM parameter. Once authenticated, the tool can fetch the necessary secret and proceed with the mounting process.
 
-> [!TIP]
-> You can also configure any command after the mount command, allowing you to restart a Docker container that relies on the volume, for example.
+You can also configure any command after the mount command, allowing you to restart a Docker container that relies on the volume, for example.
 
 ## How to use it?
 
