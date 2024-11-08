@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeraCrypt Mounter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 500px;
+            margin-top: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            background-color: #444;
+            border: 1px solid #555;
+            color: #fff;
+        }
+
+        .form-control:focus {
+            border-color: #666;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .dropdown-menu {
+            background-color: #444;
+            border: 1px solid #555;
+        }
+
+        .dropdown-item {
+            color: #fff;
+        }
+
+        .dropdown-item:hover {
+            background-color: #555;
+        }
+
+        .btn-mount {
+            background-color: #34C759;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn-mount:hover {
+            background-color: #2ECC71;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">VeraCrypt Mounter</h1>
+        <form action="http://localhost:3001/mount" method="post">
+            <div class="form-group">
+                <label for="dropdown">Select your MFA device:</label>
+                <div class="dropdown">
+                    <select name="mfaDevice" id="mfaDevice">
+                        <option value="arn:aws:iam::XXXXXXXXXXXX:mfa/phone1">phone1</option>
+                        <option value="arn:aws:iam::XXXXXXXXXXXX:mfa/phone2">phone2</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="numberInput">Enter the MFA code:</label>
+                <input type="text" class="form-control" name="mfaToken" id="mfaToken" maxlength="6"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="Enter a number">
+            </div>
+            <button class="btn-mount" type="submit">💾 Mount Now!</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
