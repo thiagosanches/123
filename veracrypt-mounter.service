@@ -1,0 +1,12 @@
+[Unit]
+Description=VeraCrypt Mounter
+After=network.target
+
+[Service]
+User=pi
+ExecStart=/home/pi/.nvm/versions/node/v16.20.2/bin/node server.js
+WorkingDirectory=/home/pi/r/github/veracrypt-mounter
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
