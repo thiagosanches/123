@@ -50,3 +50,7 @@ sudo systemctl daemon-reload
 sudo systemctl start veracrypt-mounter
 ```
 You should be good now 🥳! 
+
+## TODO
+
+- Add the steps to prepare the AWS account to ensure the tool works properly.
