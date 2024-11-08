@@ -1,8 +1,0 @@
-{
-    "device": "/dev/sda1",
-    "mountPoint": "/media/external",
-    "parameterName": "YOUR_SSM_PARAMETER_NAME_GOES_HERE",
-    "region": "us-east-1",
-    "roleArn": "YOUR_IAM_ROLE_THAT_HAS_PERMISSION_TO_READ_SSM_PARAMETERS_GOES_HERE",
-    "runAfter": "cd ~/photoprism && docker compose restart"
-}

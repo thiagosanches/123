@@ -63,13 +63,14 @@
 <body>
     <div class="container">
         <h1 class="text-center">VeraCrypt Mounter</h1>
-        <form action="http://localhost:3001/mount" method="post">
+        <form action="/mount" method="post">
             <div class="form-group">
                 <label for="dropdown">Select your MFA device:</label>
                 <div class="dropdown">
                     <select name="mfaDevice" id="mfaDevice">
-                        <option value="arn:aws:iam::XXXXXXXXXXXX:mfa/phone1">phone1</option>
-                        <option value="arn:aws:iam::XXXXXXXXXXXX:mfa/phone2">phone2</option>
+                        <% mfaDevices.forEach(function(mfaDevice) { %>
+                            <option value="<%= mfaDevice %>"><%= mfaDevice %></option>
+                        <% }); %>
                     </select>
                 </div>
             </div>

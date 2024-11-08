@@ -1,13 +1,27 @@
 const childProcess = require('child_process');
-const express = require('express')
-const app = express();
+const express = require('express');
 const bodyParser = require('body-parser');
 const config = require('./config.json');
+const fs = require('fs');
+const ejs = require('ejs');
 
+const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get('/', (req, res) => {
+    const htmlTemplate = fs.readFileSync('./index.html', 'utf8');
+    const html = ejs.render(htmlTemplate, { mfaDevices: config.mfaDevices });
+    res.status(200).send(html);
+});
+
 app.post('/mount', function (req, res) {
-    const bashCommand = `eval $(aws sts assume-role --duration-seconds 900 --role-arn "${config.roleArn}" --role-session-name "veracrypt-mounter-$(date +%s%3N)" --token-code "${req.body.mfaToken}" --serial-number "${req.body.mfaDevice}" | jq '"export AWS_ACCESS_KEY_ID=" + .Credentials.AccessKeyId + "; export AWS_SECRET_ACCESS_KEY=" + .Credentials.SecretAccessKey + "; export AWS_SESSION_TOKEN=" + .Credentials.SessionToken' --raw-output); 
+    const bashCommand = `eval $(aws sts assume-role \
+    --duration-seconds 900 \
+    --role-arn "${config.roleArn}" \
+    --role-session-name "veracrypt-mounter-$(date +%s%3N)" \
+    --token-code "${req.body.mfaToken}" \
+    --serial-number "${req.body.mfaDevice}" | \
+    jq '"export AWS_ACCESS_KEY_ID=" + .Credentials.AccessKeyId + "; export AWS_SECRET_ACCESS_KEY=" + .Credentials.SecretAccessKey + "; export AWS_SESSION_TOKEN=" + .Credentials.SessionToken' --raw-output); 
     
     MY_SECRET=$(aws ssm get-parameter --name "${config.parameterName}" --with-decryption --region "${config.region}" | jq '.Parameter.Value' --raw-output)
     veracrypt --text ${config.device} --mount ${config.mountPoint} --password="$MY_SECRET" --non-interactive
