@@ -1,4 +1,4 @@
-# verah-mounter
+# VeraCrypt-Mounter
 
 This tool is designed to assist with mounting encrypted disks using VeraCrypt. Imagine the following scenario: you have configured your home server and manually mount the VeraCrypt device, as it's not secure to hard-code the password in an initialization script or bash script for automatic mounting. This is because others with access to your server may be able to view the password you use for VeraCrypt. 
 
