@@ -8,3 +8,4 @@ With this tool, you'll still need to perform some manual steps, but it allows yo
 
 Additionally, to further enhance security, the tool requires a Multi-Factor Authentication (MFA) token to retrieve the secret password stored in the AWS SSM parameter. Once authenticated, the tool can fetch the necessary secret and proceed with the mounting process.
 
+![image](https://github.com/user-attachments/assets/dc767590-79e9-411c-9818-777d758e47cc)
