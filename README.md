@@ -48,6 +48,7 @@ Create the following file, named `config.json`, with the structure below:
 
 ```bash
 sudo cp veracrypt-mounter.service /etc/systemd/system
+sudo systemctl enable veracrypt-mounter
 sudo systemctl daemon-reload
 sudo systemctl start veracrypt-mounter
 ```
